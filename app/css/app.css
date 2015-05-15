@@ -1,0 +1,16 @@
+.map-theme {
+    background-image: url(../img/city-map-dark-5.png);
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    /*height: 400px;*/
+
+}
+
+.tp-frame {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    max-width: 950px;
+    background: rgba(7, 31, 39, 0.7);
+}
