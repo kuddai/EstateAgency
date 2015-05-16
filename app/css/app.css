@@ -14,3 +14,8 @@
     max-width: 950px;
     background: rgba(7, 31, 39, 0.7);
 }
+
+.glyphicon.dummy {
+    display: inline-block;
+    width: 15px;
+}
