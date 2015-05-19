@@ -20,45 +20,80 @@
 
   <div class="jumbotron map-theme">
     <div class="container">
-        <business-card></business-card>
+        <t-business-card></t-business-card>
     </div>
   </div>
 
-  <div class="container">
+  <div class="container" t-resize="300">
     <!--<div ng-view></div>-->
-    <div class="row">
-      <div class="col-xs-4">
-        <div class='box bg-primary'>
-          <!--<div class='box-inner'>-->
-                <!--some stupid words :(-->
-          <!--</div>-->
-          <div class="box-inner">
-            <div class="v-wrap">
-              <article class="v-box">
-                <p>This is how I've been doing it for some time. Yeeee it works asdfa sdjfk lasjdfl; kasdj; flkja sd;fk ljasdl ;fkj as;d fklja skl;d fjaskl; dfjasd</p>
-              </article>
+    <div class="panel panel-default">
+    	<div class="panel-body">
+          <div class="row row-no-padding">
+            <div class="col-sm-4">
+              <t-box class="bg-danger"></t-box>
+            </div>
+            <div class="col-sm-8">
+              <div class="row row-no-padding">
+                <div class="col-sm-3" ng-controller="MainController" id="test">
+                  <t-box class="bg-primary" ng-model="text"></t-box>
+                </div>
+                <div class="col-sm-3">
+                  <t-box class="bg-primary"></t-box>
+                </div>
+                <div class="col-sm-3">
+                  <t-box class="bg-primary"></t-box>
+                </div>
+                <div class="col-sm-3">
+                  <t-box class="bg-primary"></t-box>
+                </div>
+                <div class="col-sm-3">
+                  <t-box class="bg-primary"></t-box>
+                </div>
+                <div class="col-sm-3">
+                  <t-box class="bg-primary"></t-box>
+                </div>
+                <div class="col-sm-3">
+                  <t-box class="bg-primary"></t-box>
+                </div>
+                <div class="col-sm-3">
+                  <t-box class="bg-primary"></t-box>
+                </div>
             </div>
           </div>
-        </div>
-      </div>
-      <!--<div class="col-sm-4 bg-success">  </div>-->
-      <!--<div class="col-sm-4 bg-danger">  </div>-->
+          </div>
+    	</div>
     </div>
   </div>
+
   sdfasdf <br/>
   asdfasdfds <br/>
   asdf <br/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="components/jquery.dotdotdot.min.js"></script>
+
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/ng-debounce/angular-debounce.js"></script>
   <script src="app.js"></script>
 
   <!--directives-->
-  <script src="js/directives/businessCard.js"></script>
-
+  <script src="js/directives/tBusinessCard.js"></script>
+  <script src="js/directives/tBox.js"></script>
+  <script src="js/directives/tResize.js"></script>
   <!--script src="view1/view1.js"></script-->
   <!--script src="view2/view2.js"></script-->
+
   <script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
   <script src="components/version/interpolate-filter.js"></script>
+
+
+
+  <script>
+    app.controller('MainController', ['$scope', function($scope) {
+        $scope.text = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores commodi, consequuntur eligendi est, ex fugiat minima, necessitatibus neque officia perspiciatis quaerat quasi ratione recusandae rem rerum saepe ullam veniam! A, doloribus sed. Ad alias aperiam asperiores cum deserunt, dolorum ducimus ea facere facilis incidunt minima, natus veniam voluptate? Amet aut autem commodi fugit, harum illo laboriosam necessitatibus nemo nisi omnis pariatur possimus quas quis reiciendis sunt ullam veritatis voluptates voluptatum.';
+    }]);
+  </script>
+
 </body>
 </html>
