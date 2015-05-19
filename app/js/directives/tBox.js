@@ -8,41 +8,39 @@ app.directive('tBox',  function() {
         replace: true,
         require: '?ngModel',
         templateUrl: 'js/directives/tBox.html',
+
         link: function(scope, el, attrs, ngModel) {
             if (!ngModel) {
                 return;
             }
-            var v_wrap = el.find('.v-wrap');
-            var v_box = el.find('.v-box');
-            //v_content.dotdotdot({});
-            //console.log("finding v_content " + v_content.length);
 
+            var v_wrap = el.find('.v-wrap'),
+                v_box = el.find('.v-box'),
+                v_content;
 
-            var updateContent = function () {
-                console.log("update Content. Text: " + ngModel.$viewValue);
-                v_box.empty().append('<div class="v-content"></div>');
-                var v_content = v_box.find('.v-content');
-                v_content.html(ngModel.$viewValue);
-                console.log(v_content.height());
-                console.log(v_wrap.height());
+            var updateContent = function() {
+                v_box.empty();
+                console.log('updating! ' + ngModel.$viewValue);
+                v_content = $('<div class="v-content">' + ngModel.$viewValue + '</div>').appendTo(v_box);
+            };
+
+            var clampContentHeight = function() {
                 if (v_content.height() > v_wrap.height()) {
-                    console.log('resizing!');
                     v_content.height(v_wrap.height());
                     v_content.dotdotdot({
                         height: v_content.height()
                     });
                 }
-                //v_content.trigger('update');
-
-                console.log(v_content.height());
             };
 
-            scope.$on('tResize::resize', updateContent);
-
-            ngModel.$render = function() {
+            var updateBox = function() {
                 updateContent();
+                clampContentHeight();
             };
-            updateContent();
+
+            scope.$on('tResize::resize', updateBox);
+            ngModel.$render = updateBox;
+            updateBox();
         }
     };
 });
