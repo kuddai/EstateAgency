@@ -70,13 +70,13 @@
     left:     0;
     bottom:   0;
     right:    0;
+    padding: 6%;
 }
 
 .v-wrap {
     height: 100%;
     white-space: nowrap;
     text-align: center;
-    padding: 6%;
 }
 
 .v-wrap:before {
@@ -94,7 +94,6 @@
     display: inline-block;
     vertical-align: middle;
     white-space: normal;
-
     box-sizing: border-box;
 }
 
