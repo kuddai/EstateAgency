@@ -4,6 +4,6 @@
 angular.module('EstateAgency').directive('askiBusinessCard', function() {
     return {
         restrict: 'E',
-        templateUrl: 'askiBusinessCard.html'
+        templateUrl: 'js/directives/askiBusinessCard.html'
     };
 });

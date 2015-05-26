@@ -6,6 +6,6 @@ angular.module('EstateAgency').directive('askiBox',  function() {
         restrict: 'E',
         transclude: true,
         replace: true,
-        templateUrl: 'askiBox.html'
+        templateUrl: 'js/directives/askiBox.html'
     };
 });

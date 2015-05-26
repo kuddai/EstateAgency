@@ -14,14 +14,14 @@
   <link rel="stylesheet" href="css/theme.cold.min.css"/>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body aski-resize="300">
+<body>
 
   <div class="jumbotron map-theme">
     <div class="container">
         <aski-business-card></aski-business-card>
     </div>
   </div>
-  <div class="container" ng-controller="MainController">
+  <div class="container" ng-controller="MainController" aski-resize="300">
     <!--<div ng-view></div>-->
     <div class="panel panel-default sd-frame" >
       <div class="panel-body">
@@ -50,12 +50,12 @@
               </div>
               <div class="col-sm-3 col-xs-6">
                 <aski-box class="m-area">
-                  <div class="new-lines" aski-ellipsis="offer.area in .v-wrap"></div>
+                  <!--<div class="new-lines" aski-ellipsis="offer.area in .v-wrap"></div>-->
                 </aski-box>
               </div>
               <div class="col-sm-6 col-xs-12">
                 <aski-box class="m-description ratio-2">
-                  <div aski-ellipsis="offer.description in .v-wrap"></div>
+                  <!--<div aski-ellipsis="offer.description in .v-wrap"></div>-->
                 </aski-box>
               </div>
               <div class="col-sm-3 col-xs-6" >
@@ -74,7 +74,7 @@
       </div>
     </div>
     <!--panel end-->
-
+    <!--<aski-offer aski-info="offer"></aski-offer>-->
   </div>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -91,6 +91,7 @@
   <script src="js/directives/askiBox.js"></script>
   <script src="js/directives/askiResize.js"></script>
   <script src="js/directives/askiEllipsis.js"></script>
+  <script src="js/directives/askiOffer.js"></script>
   <!--script src="view1/view1.js"></script-->
   <!--script src="view2/view2.js"></script-->
 

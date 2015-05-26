@@ -2,11 +2,15 @@
  @name: askEllipsis
  @description:
     It is angular wrapper above jquery plugin dotdotdot (http://dotdotdot.frebsite.nl/). It is used to cut long text and replace extra text with ...
+
     aski-ellipsis attribute syntax should be "scope_var" or "{scope_var} in {css_query_of_parent_container}" where scope_var
     is a binding variable containing text which will be cut through dotdotdot plugin. css_query_of_parent_container is needed
     to set proper width and height bounds for dotdotdot plugin to keep aski-ellipsis directive responsive to changes in size of parent_container.
     If css_query_of_parent_container is not given then the direct parent of the element (element which contains aski-ellipsis directive)
-    is used. To start updating on parent container resize scope event 'askResize::resize' must be invoked.
+    is used.
+
+    To start updating on parent container resize scope event 'askResize::resize' must be invoked.
+
     Usage examples:
     1)
      <div class="v-wrap">
@@ -35,7 +39,8 @@ angular.module('EstateAgency').directive('askiEllipsis',  ["$parse" ,function($p
             var expression = attrs.askiEllipsis;
             var match = expression.match(/^([A-Za-z0-9_.]+)(?:\s+in\s+([\s\S]+))?$/);
             if (!match) {
-                throw new Error('aski-ellipsis attribute syntax should be "{scope var} in {css query of container}". But it was' + attrs.askEllipsis);
+                var m = 'aski-ellipsis attribute syntax should be "{scope_var} in {css_query_of_parent_container}" or "scope_var". But it was';
+                throw new Error(m + attrs.askEllipsis);
             }
             var pieces = match.slice(1);
             var modelName = pieces[0],
@@ -45,19 +50,28 @@ angular.module('EstateAgency').directive('askiEllipsis',  ["$parse" ,function($p
             //to ensure word wrap
             $el.css('word-wrap', 'break-word');
             //reflect possible changes in our model
-            var updateText = function() {
 
-                $el.empty();
-                $el.text(modelGetter(scope));
-            };
             //change sizes to default to allow possible alignment
             var resetSizes = function() {
                 $el.css('max-width', $container.width());
+                //destroy dotdotdot plugin to ensure normal height and width properties behaviour
+                $el.trigger("destroy");
                 $el.height("auto");
-            }
+            };
+
+            var updateText = function() {
+
+                $el.empty();
+                console.log("text should be empty", $el.text());
+                $el.text(modelGetter(scope));
+                console.log("el text before", $el.text());
+                console.log("height before", $el.height());
+            };
+
             //prohibit our content to exceed its container
             var clampContent = function() {
                 if ($el.height() > $container.height()) {
+                    console.log("clamp height");
                     $el.height($container.height());
                     $el.trigger("destroy");
                     $el.dotdotdot({
@@ -65,15 +79,22 @@ angular.module('EstateAgency').directive('askiEllipsis',  ["$parse" ,function($p
                         wrap: 'letter'
                     });
                 }
+                console.log("el text after", $el.text());
+                console.log("height after", $el.height());
             };
 
             var update = function() {
-                updateText();
+                console.groupCollapsed("during one update");
                 resetSizes();
+                updateText();
                 clampContent();
+                console.groupEnd();
             };
             //we must update in two cases when our model is changed and when container is resized.
-            scope.$on('askResize::resize', update);
+            scope.$on('askiResize::resize', function() {
+                console.log("respond to different size!");
+                update();
+            });
             scope.$watch(modelName, update);
             update();
         }
