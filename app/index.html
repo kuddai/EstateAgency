@@ -23,9 +23,9 @@
         <ask-business-card></ask-business-card>
     </div>
   </div>
-  <div class="container" ask-resize="300">
+  <div class="container" ask-resize="300" ng-controller="MainController">
     <!--<div ng-view></div>-->
-    <div class="panel panel-default sd-frame" ng-controller="MainController">
+    <div class="panel panel-default sd-frame" >
       <div class="panel-body">
         <div class="row row-small-padding">
           <div class="col-sm-4 col-xs-12">
@@ -52,7 +52,15 @@
                 <ask-box class="m-extra" ng-model="offer.extra"></ask-box>
               </div>
               <div class="col-sm-3 col-xs-6" >
-                <ask-box class="m-more" ng-model="offer.more"></ask-box>
+                  <div class="box m-more">
+                    <div class="box-inner">
+                      <div class="v-wrap">
+                        <div class="v-box" ask-ellipsis="offer.more in .v-wrap">
+                          <!--<div class="v-content" ask-ellipsis="offer.more in .v-wrap"></div>-->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
               </div>
             </div>
           </div>
@@ -61,21 +69,24 @@
     </div>
     <!--panel end-->
 
+    <textarea type="text" ng-model="offer.more" style="width: 450px; height: 250px;"></textarea>
 
   </div>
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="components/jquery.dotdotdot.min.js"></script>
-
+  <script src="bower_components/jquery/dist/jquery.min.js"></script>
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/ng-debounce/angular-debounce.js"></script>
+
+  <script src="components/jquery.dotdotdot.min.js"></script>
+
   <script src="app.js"></script>
 
   <!--directives-->
   <script src="js/directives/askBusinessCard.js"></script>
   <script src="js/directives/askBox.js"></script>
   <script src="js/directives/askResize.js"></script>
+  <script src="js/directives/askEllipsis.js"></script>
   <!--script src="view1/view1.js"></script-->
   <!--script src="view2/view2.js"></script-->
 

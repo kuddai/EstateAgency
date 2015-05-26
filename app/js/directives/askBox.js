@@ -20,7 +20,7 @@ app.directive('askBox',  function() {
 
             var updateContent = function() {
                 v_box.empty();
-                console.log('updating! ' + ngModel.$viewValue);
+                //console.log('updating! ' + ngModel.$viewValue);
                 v_content = $('<div class="v-content">' + ngModel.$viewValue + '</div>').appendTo(v_box);
             };
 
