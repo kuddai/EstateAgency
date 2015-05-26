@@ -47,31 +47,27 @@ angular.module('EstateAgency').directive('askiEllipsis',  ["$parse" ,function($p
                 ctrQuery = pieces[1],
                 modelGetter = $parse(modelName),
                 $container = (ctrQuery) ? $el.parents(ctrQuery) : $el.parent();
+            
             //to ensure word wrap
             $el.css('word-wrap', 'break-word');
             //reflect possible changes in our model
 
             //change sizes to default to allow possible alignment
             var resetSizes = function() {
-                $el.css('max-width', $container.width());
+                //$el.css('max-width', $container.width()+"px");
                 //destroy dotdotdot plugin to ensure normal height and width properties behaviour
                 $el.trigger("destroy");
                 $el.height("auto");
             };
 
             var updateText = function() {
-
                 $el.empty();
-                console.log("text should be empty", $el.text());
                 $el.text(modelGetter(scope));
-                console.log("el text before", $el.text());
-                console.log("height before", $el.height());
             };
 
             //prohibit our content to exceed its container
             var clampContent = function() {
                 if ($el.height() > $container.height()) {
-                    console.log("clamp height");
                     $el.height($container.height());
                     $el.trigger("destroy");
                     $el.dotdotdot({
@@ -79,22 +75,15 @@ angular.module('EstateAgency').directive('askiEllipsis',  ["$parse" ,function($p
                         wrap: 'letter'
                     });
                 }
-                console.log("el text after", $el.text());
-                console.log("height after", $el.height());
             };
 
             var update = function() {
-                console.groupCollapsed("during one update");
                 resetSizes();
                 updateText();
                 clampContent();
-                console.groupEnd();
             };
             //we must update in two cases when our model is changed and when container is resized.
-            scope.$on('askiResize::resize', function() {
-                console.log("respond to different size!");
-                update();
-            });
+            scope.$on('askiResize::resize',  update);
             scope.$watch(modelName, update);
             update();
         }

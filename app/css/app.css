@@ -16,11 +16,19 @@
     background: rgba(7, 31, 39, 0.7);
 }
 
-@media only screen and (max-width: 480px) {
+@media (max-width: 480px) {
     .tp-frame h1 {
         font-size: 30px;
     }
 }
+/*lg*/
+@media (min-width: 1200px) {
+    html {
+        font-size: 15px;
+    }
+}
+
+
 
 .tp-background {
     background: rgba(7, 31, 39, 0.7);
@@ -168,18 +176,17 @@
 .m-more {
     background-color: #071f27;
     color: white;
+    font-size: 2rem;
 }
 
 .m-more a {
     color: #4BBFE4;
-    font-size: 24px;
     text-decoration: none;
 }
 
 .m-more a:hover {
     /*color: #118B90;*/
     color: #ff2c5e;
-    font-size: 24px;
     text-decoration: none;
 }
 

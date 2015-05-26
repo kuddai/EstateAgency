@@ -10,7 +10,6 @@ angular.module('EstateAgency').directive('askiResize', ['$window', 'debounce', f
                 wait = $window.parseInt(newWait) || 0;
             });
             angular.element($window).on('resize', debounce(function() {
-                console.log("broadcasting resize " + $(window).width());
                 scope.$broadcast('askiResize::resize');
             }, wait));
         }
