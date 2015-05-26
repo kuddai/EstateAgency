@@ -1,6 +1,7 @@
 
 /*jumbotron classes begins*/
 .map-theme {
+    background-attachment: fixed;
     background-image: url(../img/city-map-dark-5.png);
     -webkit-background-size: cover;
     background-size: cover;
@@ -110,7 +111,7 @@
 .v-parent {
 }
 
-.v-content {
+.new-lines {
     white-space: pre-wrap;
 }
 

@@ -1,7 +1,7 @@
 /**
  * Created by kuddai on 19.05.2015.
  */
-app.directive('askResize', ['$window', 'debounce', function($window, debounce) {
+angular.module('EstateAgency').directive('askResize', ['$window', 'debounce', function($window, debounce) {
     return {
         restrict: 'A',
         link: function(scope, element, attrs) {
