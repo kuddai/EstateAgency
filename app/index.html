@@ -14,11 +14,11 @@
   <link rel="stylesheet" href="css/theme.cold.min.css"/>
   <link rel="stylesheet" href="css/app.css"/>
 </head>
-<body ask-resize="300">
+<body aski-resize="300">
 
   <div class="jumbotron map-theme">
     <div class="container">
-        <ask-business-card></ask-business-card>
+        <aski-business-card></aski-business-card>
     </div>
   </div>
   <div class="container" ng-controller="MainController">
@@ -27,46 +27,46 @@
       <div class="panel-body">
         <div class="row row-small-padding">
           <div class="col-sm-4 col-xs-12">
-            <ask-box class="m-address">
+            <aski-box class="m-address">
               <div class="new-lines">{{ offer.address }}</div>
-            </ask-box>
+            </aski-box>
           </div>
           <div class="col-sm-8 col-xs-12">
             <div class="row row-small-padding">
               <div class="col-sm-3 col-xs-6" >
-                <ask-box class="m-type">
+                <aski-box class="m-type">
                   <div>{{ offer.type }}</div>
-                </ask-box>
+                </aski-box>
               </div>
               <div class="col-sm-3 col-xs-6" id="test">
-                <ask-box class="m-price">
+                <aski-box class="m-price">
                   <div>{{ offer.price | currency:undefined:0}}</div>
-                </ask-box>
+                </aski-box>
               </div>
               <div class="col-sm-3 col-xs-6">
-                <ask-box class="m-floor">
+                <aski-box class="m-floor">
                   <div>{{ offer.floor }}</div>
-                </ask-box>
+                </aski-box>
               </div>
               <div class="col-sm-3 col-xs-6">
-                <ask-box class="m-area">
-                  <div class="new-lines" ask-ellipsis="offer.area in .v-wrap"></div>
-                </ask-box>
+                <aski-box class="m-area">
+                  <div class="new-lines" aski-ellipsis="offer.area in .v-wrap"></div>
+                </aski-box>
               </div>
               <div class="col-sm-6 col-xs-12">
-                <ask-box class="m-description ratio-2">
-                  <div ask-ellipsis="offer.description in .v-wrap"></div>
-                </ask-box>
+                <aski-box class="m-description ratio-2">
+                  <div aski-ellipsis="offer.description in .v-wrap"></div>
+                </aski-box>
               </div>
               <div class="col-sm-3 col-xs-6" >
-                <ask-box class="m-extra">
-                  <div class="new-lines" ask-ellipsis="offer.extra in .v-wrap"></div>
-                </ask-box>
+                <aski-box class="m-extra">
+                  <div class="new-lines" aski-ellipsis="offer.extra in .v-wrap"></div>
+                </aski-box>
               </div>
               <div class="col-sm-3 col-xs-6" >
-                  <ask-box class="m-more">
+                  <aski-box class="m-more">
                     <a ng-href="{{ offer.more }}">Подробнее</a>
-                  </ask-box>
+                  </aski-box>
               </div>
             </div>
           </div>
@@ -87,10 +87,10 @@
   <script src="app.js"></script>
 
   <!--directives-->
-  <script src="js/directives/askBusinessCard.js"></script>
-  <script src="js/directives/askBox.js"></script>
-  <script src="js/directives/askResize.js"></script>
-  <script src="js/directives/askEllipsis.js"></script>
+  <script src="js/directives/askiBusinessCard.js"></script>
+  <script src="js/directives/askiBox.js"></script>
+  <script src="js/directives/askiResize.js"></script>
+  <script src="js/directives/askiEllipsis.js"></script>
   <!--script src="view1/view1.js"></script-->
   <!--script src="view2/view2.js"></script-->
 
