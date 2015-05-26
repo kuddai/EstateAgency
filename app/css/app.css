@@ -12,12 +12,21 @@
 .tp-frame {
     padding-top: 15px;
     padding-bottom: 15px;
-    max-width: 950px;
     background: rgba(7, 31, 39, 0.7);
 }
 
-.trans-background {
+@media only screen and (max-width: 480px) {
+    .tp-frame h1 {
+        font-size: 30px;
+    }
+}
+
+.tp-background {
     background: rgba(7, 31, 39, 0.7);
+}
+
+.sd-frame {
+    box-shadow: 2px 2px 6px #bcbcbc
 }
 
 /*jumbotron classes ends*/
@@ -73,6 +82,7 @@
     padding: 6%;
 }
 
+/*vertical wrap*/
 .v-wrap {
     height: 100%;
     white-space: nowrap;
@@ -97,16 +107,19 @@
     box-sizing: border-box;
 }
 
+.v-parent {
+}
+
 .v-content {
     white-space: pre-wrap;
 }
 
 .t-ref {
-    color: #7FCEE7;
+    color: #4BBFE4;
 }
 
 .t-ref:hover {
-    color: #118B90;
+    color: #ff2c5e;
     text-decoration: none;
 }
 
@@ -115,6 +128,7 @@
     background-image: url(../img/city-map-light-5-sm.png);
     color: black;
     font-size: 26px;
+    text-shadow: 0px 0px 4px white;
     -webkit-background-size: cover;
     background-size: cover;
     background-position: center center;
@@ -128,19 +142,18 @@
 }
 
 .m-type {
+    background-color: #4BBFE4;
+    color: white;
     font-size: large;
 }
 
 .m-floor {
-    background-color: #7FCEE7;
-    color: #071f27;
+    background-color: #4BBFE4;
+    color: white;
     font-size: large;
 }
 
 .m-area {
-    background-color: #7FCEE7;
-    color: #071f27;
-    font-size: large;
 }
 
 .m-extra {
@@ -157,14 +170,15 @@
 }
 
 .m-more a {
-    color: #7FCEE7;
-    font-size: large;
-    /*text-decoration: none;*/
+    color: #4BBFE4;
+    font-size: 24px;
+    text-decoration: none;
 }
 
 .m-more a:hover {
-    color: #118B90;
-    font-size: large;
+    /*color: #118B90;*/
+    color: #ff2c5e;
+    font-size: 24px;
     text-decoration: none;
 }
 

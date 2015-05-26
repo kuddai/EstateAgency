@@ -1,13 +1,13 @@
 /**
  * Created by kuddai on 17.05.2015.
  */
-app.directive('tBox',  function() {
+app.directive('askBox',  function() {
     return {
         restrict: 'E',
         transclude: true,
         replace: true,
         require: '?ngModel',
-        templateUrl: 'js/directives/tBox.html',
+        templateUrl: 'js/directives/askBox.html',
 
         link: function(scope, el, attrs, ngModel) {
             if (!ngModel) {
@@ -38,7 +38,7 @@ app.directive('tBox',  function() {
                 clampContentHeight();
             };
 
-            scope.$on('tResize::resize', updateBox);
+            scope.$on('askResize::resize', updateBox);
             ngModel.$render = updateBox;
             updateBox();
         }

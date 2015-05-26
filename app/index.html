@@ -20,46 +20,48 @@
 
   <div class="jumbotron map-theme">
     <div class="container">
-        <t-business-card></t-business-card>
+        <ask-business-card></ask-business-card>
     </div>
   </div>
-
-  <div class="container" t-resize="300">
+  <div class="container" ask-resize="300">
     <!--<div ng-view></div>-->
-    <div class="panel panel-default" ng-controller="MainController">
-    	<div class="panel-body">
-          <div class="row row-small-padding">
-            <div class="col-sm-4 col-xs-12">
-              <t-box class="m-address" ng-model="offer.address"></t-box>
-            </div>
-            <div class="col-sm-8 col-xs-12">
-              <div class="row row-small-padding">
-                <div class="col-sm-3 col-xs-6">
-                  <t-box class="m-floor" ng-model="offer.floor"></t-box>
-                </div>
-                <div class="col-sm-3 col-xs-6" id="test">
-                  <t-box class="m-price" ng-model="offer.price"></t-box>
-                </div>
-                <div class="col-sm-3 col-xs-6">
-                  <t-box class="m-area" ng-model="offer.area"></t-box>
-                </div>
-                <div class="col-sm-3 col-xs-6" >
-                  <t-box class="m-type" ng-model="offer.type"></t-box>
-                </div>
-                <div class="col-sm-6 col-xs-12">
-                  <t-box class="m-description ratio-2" ng-model="offer.description"></t-box>
-                </div>
-                <div class="col-sm-3 col-xs-6" >
-                  <t-box class="m-extra" ng-model="offer.extra"></t-box>
-                </div>
-                <div class="col-sm-3 col-xs-6" >
-                  <t-box class="m-more" ng-model="offer.more"></t-box>
-                </div>
+    <div class="panel panel-default sd-frame" ng-controller="MainController">
+      <div class="panel-body">
+        <div class="row row-small-padding">
+          <div class="col-sm-4 col-xs-12">
+            <ask-box class="m-address" ng-model="offer.address"></ask-box>
+          </div>
+          <div class="col-sm-8 col-xs-12">
+            <div class="row row-small-padding">
+              <div class="col-sm-3 col-xs-6" >
+                <ask-box class="m-type" ng-model="offer.type"></ask-box>
+              </div>
+              <div class="col-sm-3 col-xs-6" id="test">
+                <ask-box class="m-price" ng-model="offer.price"></ask-box>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <ask-box class="m-floor" ng-model="offer.floor"></ask-box>
+              </div>
+              <div class="col-sm-3 col-xs-6">
+                <ask-box class="m-area" ng-model="offer.area"></ask-box>
+              </div>
+              <div class="col-sm-6 col-xs-12">
+                <ask-box class="m-description ratio-2" ng-model="offer.description"></ask-box>
+              </div>
+              <div class="col-sm-3 col-xs-6" >
+                <ask-box class="m-extra" ng-model="offer.extra"></ask-box>
+              </div>
+              <div class="col-sm-3 col-xs-6" >
+                <ask-box class="m-more" ng-model="offer.more"></ask-box>
+              </div>
             </div>
           </div>
-          </div>
-    	</div>
+        </div>
+      </div>
     </div>
+    <!--panel end-->
+
+
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -71,9 +73,9 @@
   <script src="app.js"></script>
 
   <!--directives-->
-  <script src="js/directives/tBusinessCard.js"></script>
-  <script src="js/directives/tBox.js"></script>
-  <script src="js/directives/tResize.js"></script>
+  <script src="js/directives/askBusinessCard.js"></script>
+  <script src="js/directives/askBox.js"></script>
+  <script src="js/directives/askResize.js"></script>
   <!--script src="view1/view1.js"></script-->
   <!--script src="view2/view2.js"></script-->
 
@@ -88,9 +90,9 @@
         $scope.offer = {
             address: 'Даламаново 36,\n подьезд 414',
             price: '617000&nbsp₽',
-            type: '1 комнатная квартира',
-            area: '60 м²\n(40 м² жилых)',
-            floor: '4 этаж,\nпанельный дом',
+            type: '1 комнатная квартира\n(продажа)',
+            area: 'Общая: 59 м²,\n Кухня: 11 м²,\n Жилая: 31 м²',
+            floor: '4 этаж,\n панельный дом',
             extra: "Лифт: 2П\nБалкон: 1\nСанузел: 1Р\nОкна: двор\nТелефон: нет\nСвободная\nВторичка",
             description: "Продается 1/12 доля в двухкомнатной квартире, для постоянной регистрации (прописки) и возможного проживания. Можно для семьи с ребенком 2/12 доли. Очень хорошая перспектива выкупа других долей или расселения с получением отдельного жилья в этом же районе. Дом в плане под снос до 2018года.Документы готовы к сделке",
             more: '<a href="#">Подробнее</a>'
