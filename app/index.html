@@ -23,58 +23,9 @@
   </div>
   <div class="container" ng-controller="MainController" aski-resize="300">
     <!--<div ng-view></div>-->
-    <div class="panel panel-default sd-frame" >
-      <div class="panel-body">
-        <div class="row row-small-padding">
-          <div class="col-sm-4 col-xs-12">
-            <aski-box class="m-address">
-              <div class="new-lines">{{ offer.address }}</div>
-            </aski-box>
-          </div>
-          <div class="col-sm-8 col-xs-12">
-            <div class="row row-small-padding">
-              <div class="col-sm-3 col-xs-6" >
-                <aski-box class="m-type">
-                  <div>{{ offer.type }}</div>
-                </aski-box>
-              </div>
-              <div class="col-sm-3 col-xs-6" id="test">
-                <aski-box class="m-price">
-                  <div>{{ offer.price | currency:undefined:0}}</div>
-                </aski-box>
-              </div>
-              <div class="col-sm-3 col-xs-6">
-                <aski-box class="m-floor">
-                  <div>{{ offer.floor }}</div>
-                </aski-box>
-              </div>
-              <div class="col-sm-3 col-xs-6">
-                <aski-box class="m-area">
-                  <div class="new-lines" aski-ellipsis="offer.area in .v-wrap"></div>
-                </aski-box>
-              </div>
-              <div class="col-sm-6 col-xs-12">
-                <aski-box class="m-description ratio-2">
-                  <div aski-ellipsis="offer.description in .v-wrap"></div>
-                </aski-box>
-              </div>
-              <div class="col-sm-3 col-xs-6" >
-                <aski-box class="m-extra">
-                  <div class="new-lines" aski-ellipsis="offer.extra in .v-wrap"></div>
-                </aski-box>
-              </div>
-              <div class="col-sm-3 col-xs-6" >
-                  <aski-box class="m-more">
-                    <a ng-href="{{ offer.more }}">Подробнее</a>
-                  </aski-box>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     <!--panel end-->
-    <!--<aski-offer aski-info="offer"></aski-offer>-->
+    <h2 class="text-center">Наши предложения</h2>
+    <aski-offer aski-info="offer"></aski-offer>
   </div>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -105,7 +56,7 @@
     angular.module('EstateAgency').controller('MainController', ['$scope', function($scope) {
         $scope.offer = {
             address: 'Даламаново 36,\n подьезд 414',
-            price: '617000',
+            price: '15617000',
             type: '1 комнатная квартира\n(продажа)',
             area: 'Общая: 59 м²,\n Кухня: 11 м²,\n Жилая: 31 м²',
             floor: '4 этаж,\n панельный дом',
