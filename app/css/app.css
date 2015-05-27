@@ -20,11 +20,17 @@
     .about h1 {
         font-size: 26px;
     }
+    .strike > h2 {
+        font-size: 26px;
+    }
     .about p {
         font-size: 18px;
     }
-    .m-address h2 {
-        font-size: 26px;
+    .contact {
+        font-size: 16px;
+    }
+    .m-address h3 {
+        font-size: 24px;
     }
     .m-description, .m-area, .m-extra {
         font-size: 13.5px;
@@ -38,7 +44,10 @@
     .about p {
         font-size: 20px;
     }
-    .m-address h2 {
+    .strike > h2 {
+        font-size: 42px;
+    }
+    .m-address h3 {
         font-size: 34px;
     }
     .m-description, .m-area, .m-extra {
@@ -50,10 +59,13 @@
 }
 /*sm*/
 @media (min-width: 768px) {
+    .strike > h2 {
+        font-size: 34px;
+    }
     .about p {
         font-size: 24px;
     }
-    .m-address h2 {
+    .m-address h3 {
         font-size: 24px;
     }
     .m-description, .m-area, .m-extra {
@@ -69,11 +81,10 @@
     .about h1 {
         font-size: 67px;
     }
-
-    .contact  {
-        font-size: 16px;
+    .strike > h2 {
+        font-size: 42px;
     }
-    .m-address h2 {
+    .m-address h3 {
         font-size: 32px;
     }
     .m-description, .m-area, .m-extra {
@@ -86,15 +97,13 @@
 
 /*lg*/
 @media (min-width: 1200px) {
-    .m-address h2 {
-        font-size: 36px;
-    }
     .m-description, .m-area, .m-extra {
         font-size: 16px;
     }
     .m-type, .m-floor, .m-price, .m-more  {
         font-size: 22px;
     }
+
 }
 
 .contact strong {
@@ -123,6 +132,8 @@
     display: inline-block;
     width: 15px;
 }
+
+
 
 .row-no-padding {
      margin-left: 0;
@@ -195,6 +206,44 @@
     box-sizing: border-box;
 }
 
+.strike {
+    display: block;
+    text-align: center;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-bottom: 28px;
+}
+
+.step {
+    margin-bottom: 30px;
+}
+
+.strike > h2 {
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+}
+
+.strike > h2:before,
+.strike > h2:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 200px;
+    height: 1px;
+    background: black;
+}
+
+.strike > h2:before {
+    right: 100%;
+    margin-right: 15px;
+}
+
+.strike > h2:after {
+    left: 100%;
+    margin-left: 15px;
+}
+
 .t-ref {
     color: #4BBFE4;
 }
@@ -214,7 +263,7 @@
     background-repeat: no-repeat;
 }
 
-.m-address h2 {
+.m-address h3 {
     font-weight: 500;
 }
 
