@@ -5,7 +5,8 @@
 
     aski-ellipsis attribute syntax should be "scope_var" or "{scope_var} in {css_query_of_parent_container}" where scope_var
     is a binding variable containing text which will be cut through dotdotdot plugin. css_query_of_parent_container is needed
-    to set proper width and height bounds for dotdotdot plugin to keep aski-ellipsis directive responsive to changes in size of parent_container.
+    to set proper width and height bounds for dotdotdot plugin to keep aski-ellipsis directive responsive to changes of size of parent_container.
+    It relies on
     If css_query_of_parent_container is not given then the direct parent of the element (element which contains aski-ellipsis directive)
     is used.
 
@@ -34,58 +35,44 @@
 angular.module('EstateAgency').directive('askiEllipsis',  ["$parse" ,function($parse) {
     return {
         restrict: 'A',
-        link: function(scope, $el, attrs) {
-            //parsing aski-ellipsis attribute
-            var expression = attrs.askiEllipsis;
-            var match = expression.match(/^([A-Za-z0-9_.]+)(?:\s+in\s+([\s\S]+))?$/);
-            if (!match) {
-                var m = 'aski-ellipsis attribute syntax should be "{scope_var} in {css_query_of_parent_container}" or "scope_var". But it was';
-                throw new Error(m + attrs.askEllipsis);
-            }
-            var pieces = match.slice(1);
-            var modelName = pieces[0],
-                ctrQuery = pieces[1],
-                modelGetter = $parse(modelName),
-                $container = (ctrQuery) ? $el.parents(ctrQuery) : $el.parent();
-            
-            //to ensure word wrap
-            $el.css('word-wrap', 'break-word');
-            //reflect possible changes in our model
+        require: 'ngModel',
+        link: function(scope, $el, attrs, ngModel) {
+                //parent container
+            var $ctr = (attrs.askiCtrQuery) ? $el.parents(attrs.ctrQuery) : $el.parent(),
+                //ellipsis symbol
+                ellipsisSym = attrs.askiEllispis || '... ',
+                events = attrs.askiUpdateOn || "askiEllipsis::update";
 
-            //change sizes to default to allow possible alignment
-            var resetSizes = function() {
-                //$el.css('max-width', $container.width()+"px");
-                //destroy dotdotdot plugin to ensure normal height and width properties behaviour
-                $el.trigger("destroy");
+            var updateView = function() {
+                //destroy dotdotdot plugin to ensure the default behaviour of height
+                $el.trigger("destroy.dot");
+                //restore auto height to ensure fit-content in case $ctr is not overflowed
                 $el.height("auto");
-            };
-
-            var updateText = function() {
-                $el.empty();
-                $el.text(modelGetter(scope));
-            };
-
-            //prohibit our content to exceed its container
-            var clampContent = function() {
-                if ($el.height() > $container.height()) {
-                    $el.height($container.height());
-                    $el.trigger("destroy");
+                //update our view
+                $el.text(ngModel.$modelValue);
+                //replace excessive text with ellipsis symbol if $ctr is overflowed
+                if ($el.height() > $ctr.height()) {
+                    $el.height($ctr.height());
                     $el.dotdotdot({
-                        height: $el.height(),
-                        wrap: 'letter'
+                        wrap: 'word',
+                        fallbackToLetter: true,
+                        ellipsis: ellipsisSym
                     });
                 }
             };
 
-            var update = function() {
-                resetSizes();
-                updateText();
-                clampContent();
-            };
-            //we must update in two cases when our model is changed and when container is resized.
-            scope.$on('askiResize::resize',  update);
-            scope.$watch(modelName, update);
-            update();
+            //we must update in two cases: when our model is changed or when size of our parent container is changed.
+            ngModel.$render = updateView;
+            //subscribe for all update events (such as resize)
+            angular.forEach(events.split(), function(eventName, key) {
+                scope.$on(eventName, updateView);
+            });
+            //cleaning up after ourselves
+            scope.$on("$destroy", function() {
+                //destroy dotdotdot plugin
+                $el.trigger("destroy.dot");
+            });
+            updateView();
         }
     };
 }]);

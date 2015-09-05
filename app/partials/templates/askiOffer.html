@@ -1,0 +1,62 @@
+<div class="panel panel-default sd-frame step" >
+    <div class="panel-body">
+        <div class="row row-small-padding">
+
+            <div class="col-sm-6 col-md-4 col-xs-12 aski-left-column">
+                <div class="row row-small-padding">
+                    <div class="col-xs-12">
+                        <aski-box class="m-address">
+                            <h3 class="new-lines">{{ offer.address }}</h3>
+                        </aski-box>
+                    </div>
+                    <div class="col-xs-12 visible-sm-block">
+                        <aski-box class="m-description ratio-2">
+                            <p class="long-text" aski-ellipsis aski-update-on="askiResize::resize" ng-model="offer.description"></p>
+                        </aski-box>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-8 col-xs-12">
+                <div class="row row-small-padding">
+                    <div class="col-md-3 col-md-push-0 col-sm-push-6 col-xs-6" >
+                        <aski-box class="m-type">
+                            <p>{{ offer.type }}</p>
+                        </aski-box>
+                    </div>
+                    <div class="col-md-3 col-md-pull-0 col-sm-pull-6 col-xs-6">
+                        <aski-box class="m-price">
+                            <p>{{ offer.price | currency:undefined:0}}</p>
+                        </aski-box>
+                    </div>
+                    <div class="col-md-3 col-md-push-3 col-sm-push-6 col-xs-6">
+                        <aski-box class="m-area">
+                            <p class="new-lines" aski-ellipsis aski-update-on="askiResize::resize" ng-model="offer.area"></p>
+                        </aski-box>
+                    </div>
+                    <div class="col-md-3 col-md-pull-3 col-sm-pull-6 col-xs-6">
+                        <aski-box class="m-floor">
+                            <p>{{ offer.floor }}</p>
+                        </aski-box>
+                    </div>
+                    <div class="col-md-6 col-xs-12 hidden-sm">
+                        <aski-box class="m-description ratio-2">
+                            <p class="long-text" aski-ellipsis aski-update-on="askiResize::resize" ng-model="offer.description"></p>
+                        </aski-box>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <aski-box class="m-extra">
+                            <p class="new-lines" aski-ellipsis aski-update-on="askiResize::resize" ng-model="offer.extra"></p>
+                        </aski-box>
+                    </div>
+                    <div class="col-md-3 col-xs-6">
+                        <aski-box class="m-more">
+                            <a ng-href="{{ offer.more }}">Подробнее</a>
+                        </aski-box>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

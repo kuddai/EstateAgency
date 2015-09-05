@@ -1,4 +1,7 @@
 
+@import url(http://fonts.googleapis.com/css?family=EB+Garamond&subset=latin,cyrillic);
+@import url(http://fonts.googleapis.com/css?family=Marck+Script&subset=latin,cyrillic);
+
 /*jumbotron classes begins*/
 .map-theme {
     background-attachment: fixed;
@@ -29,6 +32,9 @@
     .contact {
         font-size: 16px;
     }
+    .contact strong {
+        font-size: 18px;
+    }
     .m-address h3 {
         font-size: 24px;
     }
@@ -41,6 +47,12 @@
 }
 /*xs*/
 @media (min-width: 450px) {
+    .contact {
+        font-size: 16px;
+    }
+    .contact strong {
+        font-size: 18px;
+    }
     .about p {
         font-size: 20px;
     }
@@ -60,19 +72,22 @@
 /*sm*/
 @media (min-width: 768px) {
     .strike > h2 {
-        font-size: 34px;
+        font-size: 46px;
     }
     .about p {
         font-size: 24px;
     }
+    .aski-left-column {
+        padding-right: 0px !important;
+    }
     .m-address h3 {
-        font-size: 24px;
+        font-size: 32px;
     }
     .m-description, .m-area, .m-extra {
-        font-size: 14px;
+        font-size: 15px;
     }
     .m-type, .m-floor, .m-price, .m-more  {
-        font-size: 14px;
+        font-size: 19px;
     }
 }
 
@@ -80,9 +95,6 @@
 @media (min-width: 992px) {
     .about h1 {
         font-size: 67px;
-    }
-    .strike > h2 {
-        font-size: 42px;
     }
     .m-address h3 {
         font-size: 32px;
@@ -104,6 +116,10 @@
         font-size: 22px;
     }
 
+}
+
+.about h1 {
+    font-weight: 300;
 }
 
 .contact strong {
@@ -133,16 +149,14 @@
     width: 15px;
 }
 
-
-
 .row-no-padding {
      margin-left: 0;
      margin-right: 0;
  }
 
 .row-no-padding [class*="col-"] {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .row-small-padding {
@@ -151,12 +165,12 @@
 }
 
 .row-small-padding [class*="col-"] {
-    padding-left: 0 !important;
-    padding-right: 3px !important;
-    padding-bottom: 3px !important;
+    padding-left: 0;
+    padding-right: 3px;
+    padding-bottom: 3px;
 }
 
-/*box classes begin*/
+    /*box classes begin*/
 .box {
     position: relative;
     width:    100%; /* desired width */
@@ -201,6 +215,8 @@
 
 .v-box {
     display: inline-block;
+    max-height: 100%;
+    overflow: hidden;
     vertical-align: middle;
     white-space: normal;
     box-sizing: border-box;
@@ -220,8 +236,16 @@
 
 .strike > h2 {
     font-weight: 500;
+    /*font-family: 'EB Garamond', 'Times New Roman', serif;*/
+    font-family: 'Marck Script', cursive;
+    /*font-family: 'Bad Script', cursive;*/
     position: relative;
     display: inline-block;
+    color: black;
+    /*
+    -webkit-text-stroke: 1px black;
+    text-shadow:
+    2px 1px 0px #000;*/
 }
 
 .strike > h2:before,
@@ -264,7 +288,7 @@
 }
 
 .m-address h3 {
-    font-weight: 500;
+    font-weight: 400;
 }
 
 .m-price {
@@ -307,5 +331,30 @@
     /*color: #118B90;*/
     color: #ff2c5e;
     text-decoration: none;
+}
+
+/*
+  We're using CSS transitions for when
+  the enter and move events are triggered
+  for the element that has the .repeated-item
+  class
+*/
+.repeated-item.ng-enter, .repeated-item.ng-move {
+    -webkit-transition:0.5s ease-in-out all;
+    -moz-transition:0.5s ease-in-out all;
+    -o-transition:0.5s ease-in-out all;
+    transition:0.5s ease-in-out all;
+    opacity:0;
+}
+
+/*
+ The ng-enter-active and ng-move-active
+ are where the transition destination properties
+ are set so that the animation knows what to
+ animate.
+*/
+.repeated-item.ng-enter.ng-enter-active,
+.repeated-item.ng-move.ng-move-active {
+    opacity:1;
 }
 

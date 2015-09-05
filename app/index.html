@@ -25,11 +25,9 @@
     <!--<div ng-view></div>-->
     <!--panel end-->
     <div class="strike">
-      <h2>Наши предложения</h2>
+      <h2>Наши Предложения</h2>
     </div>
-    <aski-offer aski-info="offer"></aski-offer>
-    <aski-offer aski-info="offer"></aski-offer>
-    <aski-offer aski-info="offer"></aski-offer>
+    <aski-offer aski-info="offer" ng-repeat="offer in offers" class="repeated-item"></aski-offer>
   </div>
 
   <script src="bower_components/jquery/dist/jquery.min.js"></script>
@@ -37,9 +35,10 @@
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-i18n/angular-locale_ru-ru.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/ng-debounce/angular-debounce.js"></script>
 
-  <script src="app.js"></script>
+  <script src="js/app.js"></script>
 
   <!--directives-->
   <script src="js/directives/askiBusinessCard.js"></script>
@@ -50,15 +49,29 @@
   <!--script src="view1/view1.js"></script-->
   <!--script src="view2/view2.js"></script-->
 
-  <script src="components/version/version.js"></script>
+  <!--script src="components/version/version.js"></script>
   <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
+  <script src="components/version/interpolate-filter.js"></script-->
 
 
 
   <script>
-    angular.module('EstateAgency').controller('MainController', ['$scope', function($scope) {
-        $scope.offer = {
+
+    angular.module('EstateAgency').controller('MainController', ['$scope', '$timeout', function($scope, $timeout) {
+        window.$myScope = $scope;
+        $scope.offers = [];
+        var offers = [
+          {
+            address: 'Даламаново 36,\n подьезд 414',
+            price: '15617000',
+            type: '1 комнатная квартира\n(продажа)',
+            area: 'Площадь:\nОбщая: 59 м²,\n Кухня: 11 м²,\n Жилая: 31 м²',
+            floor: '4 этаж,\n панельный дом',
+            extra: "Лифт: 2П\nБалкон: 1\nСанузел: 1Р\nОкна: двор\nТелефон: нет\nСвободная\nВторичка",
+            description: "Продается 1/12 доля в двухкомнатной квартире, для постоянной регистрации (прописки) и возможного проживания. Можно для семьи с ребенком 2/12 доли. Очень хорошая перспектива выкупа других долей или расселения с получением отдельного жилья в этом же районе. Дом в плане под снос до 2018года.Документы готовы к сделке",
+            more: '#'
+          }/*,
+          {
             address: 'Даламаново 36,\n подьезд 414',
             price: '15617000',
             type: '1 комнатная квартира\n(продажа)',
@@ -67,7 +80,36 @@
             extra: "Лифт: 2П\nБалкон: 1\nСанузел: 1Р\nОкна: двор\nТелефон: нет\nСвободная\nВторичка",
             description: "Продается 1/12 доля в двухкомнатной квартире, для постоянной регистрации (прописки) и возможного проживания. Можно для семьи с ребенком 2/12 доли. Очень хорошая перспектива выкупа других долей или расселения с получением отдельного жилья в этом же районе. Дом в плане под снос до 2018года.Документы готовы к сделке",
             more: '#'
-        };
+          },
+          {
+            address: 'Даламаново 36,\n подьезд 414',
+            price: '15617000',
+            type: '1 комнатная квартира\n(продажа)',
+            area: 'Общая: 59 м²,\n Кухня: 11 м²,\n Жилая: 31 м²',
+            floor: '4 этаж,\n панельный дом',
+            extra: "Лифт: 2П\nБалкон: 1\nСанузел: 1Р\nОкна: двор\nТелефон: нет\nСвободная\nВторичка",
+            description: "Продается 1/12 доля в двухкомнатной квартире, для постоянной регистрации (прописки) и возможного проживания. Можно для семьи с ребенком 2/12 доли. Очень хорошая перспектива выкупа других долей или расселения с получением отдельного жилья в этом же районе. Дом в плане под снос до 2018года.Документы готовы к сделке",
+            more: '#'
+          },
+          {
+            address: 'Даламаново 36,\n подьезд 414',
+            price: '15617000',
+            type: '1 комнатная квартира\n(продажа)',
+            area: 'Общая: 59 м²,\n Кухня: 11 м²,\n Жилая: 31 м²',
+            floor: '4 этаж,\n панельный дом',
+            extra: "Лифт: 2П\nБалкон: 1\nСанузел: 1Р\nОкна: двор\nТелефон: нет\nСвободная\nВторичка",
+            description: "Продается 1/12 доля в двухкомнатной квартире, для постоянной регистрации (прописки) и возможного проживания. Можно для семьи с ребенком 2/12 доли. Очень хорошая перспектива выкупа других долей или расселения с получением отдельного жилья в этом же районе. Дом в плане под снос до 2018года.Документы готовы к сделке",
+            more: '#'
+          }*/
+        ];
+      $timeout(function() {
+        $scope.$apply(function(){
+          console.log("add offers");
+          for(var i = 0; i < offers.length; i++) {
+            $scope.offers.push(offers[i]);
+          }
+        });
+      }, 200);
     }]);
   </script>
 

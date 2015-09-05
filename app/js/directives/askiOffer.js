@@ -4,11 +4,10 @@
 angular.module('EstateAgency').directive('askiOffer', function() {
     return {
         restrict: 'E',
-        templateUrl: 'js/directives/askiOffer.html',
+        replace: true,
         scope: {
             offer: '=askiInfo'
         },
-        link: function(scope, $el, attrs) {
-        }
+        templateUrl: '/EstateAgency/app/partials/templates/askiOffer.html'
     };
 });
