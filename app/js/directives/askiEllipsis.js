@@ -40,8 +40,8 @@ angular.module('EstateAgency').directive('askiEllipsis',  ["$parse" ,function($p
                 //parent container
             var $ctr = (attrs.askiCtrQuery) ? $el.parents(attrs.ctrQuery) : $el.parent(),
                 //ellipsis symbol
-                ellipsisSym = attrs.askiEllispis || '... ',
-                events = attrs.askiUpdateOn || "askiEllipsis::update";
+                ellipsisSym = attrs.askiEllipsis || '... ',
+                events = (attrs.askiUpdateOn || "askiEllipsis::update").split();
 
             var updateView = function() {
                 //destroy dotdotdot plugin to ensure the default behaviour of height
@@ -64,13 +64,14 @@ angular.module('EstateAgency').directive('askiEllipsis',  ["$parse" ,function($p
             //we must update in two cases: when our model is changed or when size of our parent container is changed.
             ngModel.$render = updateView;
             //subscribe for all update events (such as resize)
-            angular.forEach(events.split(), function(eventName, key) {
+            angular.forEach(events, function(eventName, key) {
                 scope.$on(eventName, updateView);
             });
             //cleaning up after ourselves
             scope.$on("$destroy", function() {
                 //destroy dotdotdot plugin
                 $el.trigger("destroy.dot");
+                //$el.remove();
             });
             updateView();
         }

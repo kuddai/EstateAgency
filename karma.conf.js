@@ -21,7 +21,7 @@ module.exports = function(config){
 
     frameworks: ['jasmine'],
 
-    browsers : ['Chrome'],
+    browsers : ['PhantomJS'],
 
     preprocessors: {
       'app/partials/templates/*.html':['ng-html2js']
@@ -29,16 +29,19 @@ module.exports = function(config){
 
     plugins : [
             'karma-chrome-launcher',
-            'karma-firefox-launcher',
+            'karma-phantomjs-launcher',
             'karma-jasmine',
             'karma-junit-reporter',
             'karma-ng-html2js-preprocessor'
-
             ],
 
     junitReporter : {
       outputFile: 'app/tests/test_out/specs.xml',
       suite: 'unit'
+    },
+    phantomjsLauncher: {
+      // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
+      exitOnResourceError: true
     }
 
   });
